@@ -19,3 +19,8 @@ app:
     # для DEV оставил пустым (key сгенерируется при старте),
     # для PROD обязательно надо будет задать 256-битный ключ base64 в application-prod.yml
     aes-key-b64:
+
+  jwt:
+    # для PROD обязательно надо будет задать JWT токен в application-prod.yml
+    secret:
+    expiration-minutes: 120

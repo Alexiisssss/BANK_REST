@@ -1,8 +1,26 @@
-#
-# application.yml — главный конфигурационный файл Spring Boot.
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bankdb
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc.lob.non_contextual_creation: true
+    open-in-view: false
+  liquibase:
+    change-log: classpath:db/migration/db.changelog-master.xml
 
-Что нужно сделать:
-  - Указать настройки подключения к базе данных.
-  - Указать порт приложения.
-  - Настроить параметры безопасности и JWT.
-  - Включить Swagger UI.
+app:
+  crypto:
+    # для DEV оставил пустым (key сгенерируется при старте),
+    # для PROD обязательно надо будет задать 256-битный ключ base64 в application-prod.yml
+    aes-key-b64:
+
+  jwt:
+    # для PROD обязательно надо будет задать JWT токен в application-prod.yml
+    secret:
+    expiration-minutes: 120
