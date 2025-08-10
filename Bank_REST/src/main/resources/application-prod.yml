@@ -16,6 +16,4 @@ spring:
 
 app:
   crypto:
-    # для DEV оставил пустым (key сгенерируется при старте),
-    # для PROD обязательно надо будет задать 256-битный ключ base64 в application-prod.yml
-    aes-key-b64:
+    aes-key-b64: "_256_БИТНЫЙ_KEY_В_BASE64"
