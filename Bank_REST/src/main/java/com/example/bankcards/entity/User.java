@@ -1,7 +1,6 @@
 package com.example.bankcards.entity;
 
 import jakarta.persistence.*;
-
 import java.time.OffsetDateTime;
 
 @Entity
