@@ -4,18 +4,19 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class TransferRequest {
-    @NotNull
+    @NotNull(message = "From card id is required.")
     private Long fromCardId;
-    @NotNull
+
+    @NotNull(message = "To card id is required.")
     private Long toCardId;
 
-    @NotNull
-    @DecimalMin(value = "0.01")
+    @NotNull(message = "Amount is required.")
+    @DecimalMin(value = "0.01", message = "Amount must be at least 0.01.")
+    @Digits(integer = 18, fraction = 2, message = "Amount precision is invalid.")
     private BigDecimal amount;
 
-    @Size(max = 255)
+    @Size(max = 255, message = "Description must be at most 255 characters.")
     private String description;
-
 
     public Long getFromCardId() {
         return fromCardId;

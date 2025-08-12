@@ -6,21 +6,23 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class CardCreateRequest {
-    @NotNull
+    @NotNull(message = "Owner id is required.")
     private Long ownerId;
 
-    @NotBlank
-    @Pattern(regexp = "\\d{16}", message = "PAN должен содержать 16 цифр")
+    @NotBlank(message = "PAN is required.")
+    @Pattern(regexp = "\\d{16}", message = "PAN must contain exactly 16 digits.")
     private String pan;
 
-    @NotBlank
-    @Size(max = 128)
+    @NotBlank(message = "Card holder name is required.")
+    @Size(max = 128, message = "Card holder name must be at most 128 characters.")
     private String holderName;
 
-    @NotNull
+    @NotNull(message = "Expiry date is required.")
+    @Future(message = "Expiry date must be in the future.")
     private LocalDate expiryDate;
 
-    @DecimalMin(value = "0.00")
+    @DecimalMin(value = "0.00", message = "Initial balance must be >= 0.00.")
+    @Digits(integer = 18, fraction = 2, message = "Initial balance precision is invalid.")
     private BigDecimal initialBalance = BigDecimal.ZERO;
 
     public Long getOwnerId() {

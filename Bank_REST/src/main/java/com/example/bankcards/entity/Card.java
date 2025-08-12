@@ -25,7 +25,7 @@ public class Card {
     @Column(name = "encrypted_pan", nullable = false, length = 700)
     private String encryptedPan;
 
-    // Маска PAN, которую отдаем наружу: **** **** **** 1234
+    // The PAN mask that we give out: **** **** **** 1234
     @Column(name = "pan_mask", nullable = false, length = 32)
     private String panMask;
 

@@ -3,9 +3,9 @@ package com.example.bankcards.dto.auth;
 import jakarta.validation.constraints.NotBlank;
 
 public class LoginRequest {
-    @NotBlank
+    @NotBlank(message = "Username must not be blank.")
     private String username;
-    @NotBlank
+    @NotBlank(message = "Password must not be blank.")
     private String password;
 
     public String getUsername() {

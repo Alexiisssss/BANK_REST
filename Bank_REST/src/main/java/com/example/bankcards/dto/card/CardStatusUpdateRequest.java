@@ -4,7 +4,7 @@ import com.example.bankcards.entity.CardStatus;
 import jakarta.validation.constraints.NotNull;
 
 public class CardStatusUpdateRequest {
-    @NotNull
+    @NotNull(message = "Status is required.")
     private CardStatus status;
 
     public CardStatus getStatus() { return status; }

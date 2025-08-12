@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "app.crypto")
 public class CryptoProperties {
     /**
-     * Base64-строка 32-байтового ключа (AES-256).
+     * Base64-string 32-byte key (AES-256).
      */
     private String aesKeyB64;
 

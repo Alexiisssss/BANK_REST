@@ -4,11 +4,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class RegisterRequest {
-    @NotBlank
-    @Size(min = 3, max = 64)
+    @NotBlank(message = "Username must not be blank.")
+    @Size(min = 3, max = 64, message = "Username length must be between 3 and 64 characters.")
     private String username;
-    @NotBlank
-    @Size(min = 6, max = 128)
+    @NotBlank(message = "Password must not be blank.")
+    @Size(min = 6, max = 128, message = "Password length must be between 6 and 128 characters.")
     private String password;
 
     public String getUsername() {

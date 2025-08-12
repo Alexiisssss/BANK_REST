@@ -1,26 +1,18 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/bankdb
-    username: postgres
-    password: postgres
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
   jpa:
     hibernate:
       ddl-auto: validate
     properties:
       hibernate:
-        format_sql: true
         jdbc.lob.non_contextual_creation: true
     open-in-view: false
+
   liquibase:
     change-log: classpath:db/migration/db.changelog-master.xml
 
 app:
-  crypto:
-    # для DEV оставил пустым (key сгенерируется при старте),
-    # для PROD обязательно надо будет задать 256-битный ключ base64 в application-prod.yml
-    aes-key-b64:
-
   jwt:
-    # для PROD обязательно надо будет задать JWT токен в application-prod.yml
-    secret:
     expiration-minutes: 120

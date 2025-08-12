@@ -1,23 +1,21 @@
 spring:
+  config:
+    activate:
+      on-profile: prod
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/bankdb
-    username: postgres
-    password: postgres
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
   jpa:
-    hibernate:
-      ddl-auto: validate
     properties:
       hibernate:
-        format_sql: true
-        jdbc.lob.non_contextual_creation: true
-    open-in-view: false
-  liquibase:
-    change-log: classpath:db/migration/db.changelog-master.xml
+        format_sql: false
 
 app:
   crypto:
-    aes-key-b64: "_256_БИТНЫЙ_KEY_В_BASE64"
+    aes-key-b64: ${AES_KEY_B64:?MUST_SET_256_BIT_KEY_IN_BASE64}
 
   jwt:
-    secret: "вот здесь вот очень длинная-256-bit строка с JWT-токеном"
-    expiration-minutes: 120
+    secret: ${JWT_SECRET:?MUST_SET_JWT_SECRET_256bit}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:120}
